@@ -1,34 +1,65 @@
 //Container
 $ContainerWidth: 1200px;
 $ContainerHeight: 2376px;
-
 $ContainerBgColor: white;
 
-//=========================
+//Text
+@mixin RailwayText($fontsize, $fontcolor, $fontweight) {
+  font-family: 'Raleway', sans-serif;
+  color: $fontcolor;
+  font-size: $fontsize;
+  font-weight: $fontweight;
+}
+
+//Header
+$HeaderHeight: 436px;
+$HeaderWidth: $ContainerWidth*0.8;
+$HeaderTitleTopMargin: 114px;
+$HeaderTitleLeftMargin: 121px;
+$HeaderTitleWidth: 632px;
+$HeaderAnnotationHeightSize: 44px;
+$HeaderAnnotationWidthSize: 531px;
+
 
 //Navbar
-$NavbarWidth: 20%;
+$NavbarWidth: $ContainerWidth * 0.2;
 $NavbarBgColor: #383843;
 $NavbarTextColor: #a6a6a9;
 $NaviTextLeftPadding: 30px;
 $NaviTextTopPadding: 22px;
 
-//=========================
 
 //Right column
-$RightColumnWidth: 100%-$NavbarWidth;
-//=========================
+$RightColumnWidth: $ContainerWidth * 0.8;
+
 
 // Right column
 $PortfolioPadding: 3% 3% 0 7%;
-//=========================
 
+
+// Portfolio-block
+$PortfolioBlockHeight: $ContainerHeight - $HeaderHeight;
+$PortfolioBlockMarginTop: 77px;
+$PortfolioBlockMarginRight: 96px;
+$PortfolioBlockMarginLeft: 116px;
+$PortfolioBlockWidth: ($RightColumnWidth - $PortfolioBlockMarginRight - $PortfolioBlockMarginLeft);
+
+
+
+// Portfolio inner block
+$PortfolioInnerBlockPaddingTop: 65px;
+
+//=========================
 
 * {
   padding: 0;
   margin: 0;
 }
-
+//portrait
+#portrait {
+  width: 100%;
+  height: auto;
+}
 
 body {
   background-color: black;
@@ -48,16 +79,14 @@ body {
   float: left;
   width: $NavbarWidth;
   background-color: $NavbarBgColor;
-  color: $NavbarTextColor;
+
 }
 
 #navi_list {
   padding-left: $NaviTextLeftPadding;
   padding-top: $NaviTextTopPadding;
   list-style: none;
-  font-family: 'Raleway', sans-serif;
-  color: #ffffff;
-  font-size: 22px;
+  @include RailwayText(22px, $NavbarTextColor, n);
 
   li {
     padding-bottom: 44px;
@@ -66,28 +95,61 @@ body {
 
 .right_column {
   width: $RightColumnWidth;
-  display: block;
-  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
 }
 
 .header {
   display: block;
   width: 100%;
-  height: 436px;
+  height: $HeaderHeight;
   background: url("/assets/img/header.jpg") center no-repeat;
   background-size: cover;
 
 }
 
-.portfolio_block {
-
-
-  background-color: antiquewhite;
-  padding: $PortfolioPadding;
+#header_title {
+  @include RailwayText(48px, #ffffff, bold);
+  width: $HeaderTitleWidth;
+  margin-top: $HeaderTitleTopMargin;
+  margin-left: $HeaderTitleLeftMargin;
 }
 
-//portrait
-#portrait {
-  width: 100%;
-  height: auto;
+#header_annotation {
+  @include RailwayText(14px, #c6c6c6, medium);
+  text-align: center;
+  line-height: 1.7;
+  width: $HeaderAnnotationWidthSize;
+  height: $HeaderAnnotationHeightSize;
+  margin: 15px auto;
+}
+
+.portfolio_block {
+  display: block;
+  @include RailwayText(32px, #404040, medium);
+  width: $PortfolioBlockWidth;
+  height: $PortfolioBlockHeight;
+  background-color: white;
+  margin-top: $PortfolioBlockMarginTop;
+  margin-left: $PortfolioBlockMarginLeft;
+  margin-right: $PortfolioBlockMarginRight;
+}
+.portfolio_block_span:after {
+    content: "";
+    display: block;
+    width: 76px;
+    height: 3px;
+    transition: opacity 0.2s linear;
+    background-color: #dc646f;
+    position: absolute;
+    top: 61%;   /*полоска будет в самом низу */
+    left:392px;
+    z-index: 1;
+ }
+
+
+
+.portfolio_inner_block {
+  margin-top: $PortfolioInnerBlockPaddingTop;
 }
