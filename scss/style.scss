@@ -1,3 +1,93 @@
+//Container
+$ContainerWidth: 1200px;
+$ContainerHeight: 2376px;
+
+$ContainerBgColor: white;
+
+//=========================
+
+//Navbar
+$NavbarWidth: 20%;
+$NavbarBgColor: #383843;
+$NavbarTextColor: #a6a6a9;
+$NaviTextLeftPadding: 30px;
+$NaviTextTopPadding: 22px;
+
+//=========================
+
+//Right column
+$RightColumnWidth: 100%-$NavbarWidth;
+//=========================
+
+// Right column
+$PortfolioPadding: 3% 3% 0 7%;
+//=========================
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
 body {
   background-color: black;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: $ContainerHeight;
+  width: $ContainerWidth;
+  margin: 0 auto;
+  background-color: $ContainerBgColor;
+}
+
+.navbar {
+  display: block;
+  float: left;
+  width: $NavbarWidth;
+  background-color: $NavbarBgColor;
+  color: $NavbarTextColor;
+}
+
+#navi_list {
+  padding-left: $NaviTextLeftPadding;
+  padding-top: $NaviTextTopPadding;
+  list-style: none;
+  font-family: 'Raleway', sans-serif;
+  color: #ffffff;
+  font-size: 22px;
+
+  li {
+    padding-bottom: 44px;
+  }
+}
+
+.right_column {
+  width: $RightColumnWidth;
+  display: block;
+  background-color: blue;
+}
+
+.header {
+  display: block;
+  width: 100%;
+  height: 436px;
+  background: url("/assets/img/header.jpg") center no-repeat;
+  background-size: cover;
+
+}
+
+.portfolio_block {
+
+
+  background-color: antiquewhite;
+  padding: $PortfolioPadding;
+}
+
+//portrait
+#portrait {
+  width: 100%;
+  height: auto;
 }
